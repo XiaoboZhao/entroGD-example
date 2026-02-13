@@ -1,6 +1,8 @@
 # entroGD
 
-Entropy-guided Generalized Deduplication (entroGD) for data compression.
+Implementation of Entropy-guided Generalized Deduplication (entroGD) for data compression, as proposed in:
+
+> [EntroGD: Scalable Generalized Deduplication for Efficient Direct Analytics on Compressed IoT Data](https://arxiv.org/abs/2511.04148)
 
 ## Example
 

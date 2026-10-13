@@ -88,16 +88,16 @@ def get_compressed_size(n, d, n_b, dev_bits, m, counts=True):
         int: Estimated compressed data size in bytes.
         int: Estimated size of compressed data required for analytics in bytes.
     """
-    len_d = np.sum(hamming(a, type(a)(0)) for a in dev_bits)
-    len_b = np.sum(m) - len_d
-    len_bc = get_min_bit_length(n)  # overestimated due to not knowing max base count
-    len_id = get_min_bit_length(n_b)
+    len_d = sum(int(hamming(a, type(a)(0))) for a in dev_bits)
+    len_b = int(sum(m)) - len_d
+    len_bc = int(get_min_bit_length(n))  # overestimated due to not knowing max base count
+    len_id = int(get_min_bit_length(n_b))
 
     size_bases = n_b * len_b
     size_base_counts = counts * n_b * len_bc
-    size_deviations = n * (len_d.astype(np.uint64) + len_id)  # ignores Elias Gamma encoding
+    size_deviations = int(n) * (len_d + len_id)  # ignores Elias Gamma encoding
 
-    size_dev_bits = np.sum(m)
+    size_dev_bits = int(sum(m))
     size_delta_initial = 0  # TODO ignored for now, requires passing more info
     size_categories = 0  # TODO ignored for now, requires passing more info
     size_params = 16 * d + 16 + size_dev_bits + size_delta_initial + size_categories

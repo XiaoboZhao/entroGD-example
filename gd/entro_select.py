@@ -43,7 +43,7 @@ def _log_transformation_function(dev_bits, m, n_b, size_compressed, size_uncompr
     logger.debug(
         (
             "Transformation function:\n"
-            f"  len_d:            {sum(hamming(a, type(a)(0)) for a in dev_bits):.0f}\n"
+            f"  len_d:            {sum(int(hamming(a, type(a)(0))) for a in dev_bits):.0f}\n"
             f"  n_b:              {n_b:d}\n"
             f"  size (comp):      {size_compressed:.0f} (bytes)\n"
             f"  size (original):  {size_uncompressed:.0f} (bytes)\n"
